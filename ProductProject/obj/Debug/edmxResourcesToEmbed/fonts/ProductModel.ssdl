@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProductDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ProductDB.dbo.user' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="fullname" />
+      <PropertyRef Name="age" />
+      <PropertyRef Name="isdelete" />
+      <PropertyRef Name="isactive" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" />
+    <Property Name="username" Type="varchar" MaxLength="50" />
+    <Property Name="fullname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="age" Type="int" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="10" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+    <Property Name="phone" Type="varchar" MaxLength="10" />
+    <Property Name="isdelete" Type="bit" Nullable="false" />
+    <Property Name="isactive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="ProductDBModelStoreContainer">
+    <EntitySet Name="user" EntityType="Self.user" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [user].[Id] AS [Id], 
+    [user].[username] AS [username], 
+    [user].[fullname] AS [fullname], 
+    [user].[age] AS [age], 
+    [user].[password] AS [password], 
+    [user].[email] AS [email], 
+    [user].[phone] AS [phone], 
+    [user].[isdelete] AS [isdelete], 
+    [user].[isactive] AS [isactive]
+    FROM [dbo].[user] AS [user]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
